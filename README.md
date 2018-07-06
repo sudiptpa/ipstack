@@ -45,7 +45,7 @@ Please see [CHANGELOG](https://github.com/sudiptpa/ipstack/blob/master/CHANGELOG
 
 Contributions are **welcome** and will be fully **credited**.
 
-Contributions can be made via a Pull Request on [Github](https://github.com/sudiptpa/geoip).
+Contributions can be made via a Pull Request on [Github](https://github.com/sudiptpa/ipstack).
 
 
 
