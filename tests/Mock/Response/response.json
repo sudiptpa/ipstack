@@ -1,0 +1,59 @@
+{
+   "ip":"27.34.19.106",
+   "hostname":"27.34.19.106",
+   "type":"ipv4",
+   "continent_code":"AS",
+   "continent_name":"Asia",
+   "country_code":"NP",
+   "country_name":"Nepal",
+   "region_code":"1",
+   "region_name":"Central Region",
+   "city":"Jawalakhel",
+   "zip":null,
+   "latitude":27.6667,
+   "longitude":85.3167,
+   "location":{
+      "geoname_id":1283312,
+      "capital":"Kathmandu",
+      "languages":[
+         {
+            "code":"ne",
+            "name":"Nepali",
+            "native":"\u0928\u0947\u092a\u093e\u0932\u0940"
+         }
+      ],
+      "country_flag":"http:\/\/assets.ipstack.com\/flags\/np.svg",
+      "country_flag_emoji":"\ud83c\uddf3\ud83c\uddf5",
+      "country_flag_emoji_unicode":"U+1F1F3 U+1F1F5",
+      "calling_code":"977",
+      "is_eu":false
+   },
+   "time_zone":{
+      "id":"Asia\/Kathmandu",
+      "current_time":"2018-07-06T14:16:47+05:45",
+      "gmt_offset":20700,
+      "code":"+0545",
+      "is_daylight_saving":false
+   },
+   "currency":{
+      "code":"NPR",
+      "name":"Nepalese Rupee",
+      "plural":"Nepalese rupees",
+      "symbol":"NPRs",
+      "symbol_native":"\u0928\u0947\u0930\u0942"
+   },
+   "connection":{
+      "asn":17501,
+      "isp":"WorldLink Communications Pvt Ltd"
+   },
+   "security":{
+      "is_proxy":false,
+      "proxy_type":null,
+      "is_crawler":false,
+      "crawler_name":null,
+      "crawler_type":null,
+      "is_tor":false,
+      "threat_level":"low",
+      "threat_types":null
+   }
+}
