@@ -26,14 +26,20 @@ This package only supports `json` format for now.
 Here are a few examples on how you can use the package:
 
 ```php
-  $geo = new Sujip\Ipstack\Ipstack($ip);
+    $ipstack = new Sujip\Ipstack\Ipstack($ip);
 
-  $geo->country();
+    $ipstack->country();
 
-  $geo->city();
+    $ipstack->city();
 
-  $geo->region();
+    $ipstack->region();
 
+
+  ...
+
+    $ipstack = new Sujip\Ipstack\Ipstack($ip, $api_key);
+
+    $ipstack->formatted();
 ```
 Also have a look in the [source code of `Sujip\Ipstack\Ipstack`](https://github.com/sudiptpa/ipstack/blob/master/src/Ipstack.php) to discover the methods you can use.
 

@@ -19,21 +19,25 @@ class Ipstack
      * Create new instance.
      *
      * @param $ip
+     * @param $api_key
      */
-    public function __construct($ip = null)
+    public function __construct($ip, $api_key = null)
     {
-        $this->items = $this->call($ip);
+        $this->items = $this->call($ip, $api_key);
     }
 
     /**
-     * Make an API call
+     * Make an API call with IP
+     *
+     * @param $ip
+     * @param $api_key
      *
      * @return \Sujip\Ipstack\Http\Response
      */
-    public function call($ip = null)
+    public function call($ip, $api_key)
     {
         try {
-            $response = (new Request($ip))->make();
+            $response = (new Request($ip, $api_key))->make();
         } catch (Forbidden $e) {
             throw new Forbidden('Error: No IP specified', 403);
         }

@@ -33,7 +33,7 @@ class IpstackTest extends TestCase
         $this->expectExceptionMessage('Error: No IP specified');
         $this->expectExceptionCode(403);
 
-        $geo = new Ipstack();
+        $geo = new Ipstack('');
     }
 
     public function testShouldReturnValidResponse()

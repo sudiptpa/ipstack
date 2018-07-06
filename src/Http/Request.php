@@ -16,11 +16,20 @@ class Request
     protected $ip;
 
     /**
-     * @param $ip
+     * @var string
      */
-    public function __construct($ip = null)
+    protected $api_key;
+
+    /**
+     * Create new instance.
+     *
+     * @param $ip
+     * @param null $api_key
+     */
+    public function __construct($ip = null, $api_key = null)
     {
         $this->ip = $ip;
+        $this->api_key = $api_key;
     }
 
     /**
@@ -33,10 +42,13 @@ class Request
         }
 
         try {
-            $response = file_get_contents(
-                sprintf('https://ipstack.com/ipstack_api.php?ip=%s', $this->ip)
-            );
+            $url = sprintf('https://ipstack.com/ipstack_api.php?ip=%s', $this->ip);
 
+            if ($this->api_key) {
+                $url = sprintf('http://api.ipstack.com/%s?access_key=%s', $this->ip, $this->api_key);
+            }
+
+            $response = file_get_contents($url);
         } catch (Exception $e) {
             $this->throwException('Forbidden', 403);
         }
