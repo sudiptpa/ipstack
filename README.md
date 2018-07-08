@@ -39,7 +39,7 @@ Here are a few examples on how you can use the package:
 
 #### Using API Key
 
-```
+```php
     $ipstack = new Sujip\Ipstack\Ipstack($ip, $api_key);
 
     $ipstack->formatted();
@@ -49,7 +49,7 @@ Here are a few examples on how you can use the package:
 
 If you have a paid membership with https://ipstack.com and want to make API call with HTTPS mode, you can call ->secure() method.
 
-```
+```php
     $ipstack = (new Sujip\Ipstack\Ipstack($ip, $api_key))->secure();
 
     $ipstack->formatted();
