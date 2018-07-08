@@ -11,7 +11,22 @@ use Sujip\Ipstack\Http\Request;
 class Ipstack
 {
     /**
-     * @var mixed
+     * @var string
+     */
+    protected $ip;
+
+    /**
+     * @var string
+     */
+    protected $api_key;
+
+    /**
+     * @var boolean
+     */
+    protected $secure = false;
+
+    /**
+     * @var array
      */
     protected $items = [];
 
@@ -23,26 +38,79 @@ class Ipstack
      */
     public function __construct($ip, $api_key = null)
     {
-        $this->items = $this->call($ip, $api_key);
+        $this->ip = $ip;
+        $this->api_key = $api_key;
+    }
+
+    /**
+     * Set HTTPS mode on for API call.
+     *
+     * @return boolean
+     */
+    public function secure()
+    {
+        $this->secure = true;
+
+        return $this;
     }
 
     /**
      * Make an API call with IP
      *
-     * @param $ip
-     * @param $api_key
-     *
      * @return \Sujip\Ipstack\Http\Response
      */
-    public function call($ip, $api_key)
+    public function call()
     {
         try {
-            $response = (new Request($ip, $api_key))->make();
+            $request = new Request([
+                'ip' => $this->ip,
+                'api_key' => $this->api_key,
+                'secure' => $this->secure,
+            ]);
+
+            $response = $request->make();
         } catch (Forbidden $e) {
             throw new Forbidden('Error: No IP specified', 403);
         }
 
         return $response->getBody();
+    }
+
+    /**
+     * Resolve if the API returns the coulumn.
+     *
+     * @param $key
+     * @param $default
+     */
+    public function resolve($key, $default = null)
+    {
+        if (!sizeof($this->items)) {
+            $this->items = $this->call();
+        }
+
+        if (isset($this->items[$key])) {
+            return $this->items[$key];
+        }
+
+        return $default;
+    }
+
+    /**
+     * Get formatted address by IP
+     * eg: Kathmandu, Central Region, Nepal
+     *
+     * @return string
+     */
+    public function formatted()
+    {
+        $address = array_filter([
+            $this->city(),
+            $this->zip(),
+            $this->region(),
+            $this->country(),
+        ]);
+
+        return implode(', ', $address);
     }
 
     /**
@@ -86,21 +154,6 @@ class Ipstack
     }
 
     /**
-     * Resolve if the API returns the coulumn.
-     *
-     * @param $key
-     * @param $default
-     */
-    public function resolve($key, $default = null)
-    {
-        if (isset($this->items[$key])) {
-            return $this->items[$key];
-        }
-
-        return $default;
-    }
-
-    /**
      * Get your region eg: Central Region
      *
      * @return string
@@ -118,23 +171,6 @@ class Ipstack
     public function city()
     {
         return $this->resolve('city');
-    }
-
-    /**
-     * Get formatted address by IP, eg: Kathmandu, Central Region, Nepal
-     *
-     * @return string
-     */
-    public function formatted()
-    {
-        $address = array_filter([
-            $this->city(),
-            $this->zip(),
-            $this->region(),
-            $this->country(),
-        ]);
-
-        return implode(', ', $address);
     }
 
     /**

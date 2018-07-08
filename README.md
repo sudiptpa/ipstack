@@ -25,6 +25,8 @@ This package only supports `json` format for now.
 
 Here are a few examples on how you can use the package:
 
+#### Free
+
 ```php
     $ipstack = new Sujip\Ipstack\Ipstack($ip);
 
@@ -33,14 +35,26 @@ Here are a few examples on how you can use the package:
     $ipstack->city();
 
     $ipstack->region();
+```
 
+#### Using API Key
 
-  ...
-
+```
     $ipstack = new Sujip\Ipstack\Ipstack($ip, $api_key);
 
     $ipstack->formatted();
 ```
+
+#### Premium Membership
+
+If you have a paid membership with https://ipstack.com and want to make API call with HTTPS mode, you can call ->secure() method.
+
+```
+    $ipstack = (new Sujip\Ipstack\Ipstack($ip, $api_key))->secure();
+
+    $ipstack->formatted();
+```
+
 Also have a look in the [source code of `Sujip\Ipstack\Ipstack`](https://github.com/sudiptpa/ipstack/blob/master/src/Ipstack.php) to discover the methods you can use.
 
 ### Changelog
@@ -52,7 +66,6 @@ Please see [CHANGELOG](https://github.com/sudiptpa/ipstack/blob/master/CHANGELOG
 Contributions are **welcome** and will be fully **credited**.
 
 Contributions can be made via a Pull Request on [Github](https://github.com/sudiptpa/ipstack).
-
 
 
 ### Testing

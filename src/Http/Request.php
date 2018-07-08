@@ -13,42 +13,50 @@ class Request
     /**
      * @var string
      */
-    protected $ip;
-
-    /**
-     * @var string
-     */
-    protected $api_key;
+    protected $param = [];
 
     /**
      * Create new instance.
      *
-     * @param $ip
-     * @param null $api_key
+     * @param $param
      */
-    public function __construct($ip = null, $api_key = null)
+    public function __construct($param)
     {
-        $this->ip = $ip;
-        $this->api_key = $api_key;
+        $this->param = $param;
     }
 
     /**
-     * @return null
+     * @return mixed
+     */
+    public function getEndPoint()
+    {
+        $url = sprintf('https://ipstack.com/ipstack_api.php?ip=%s', $this->param['ip']);
+
+        if ($this->param['api_key']) {
+            $protocol = $this->param['secure'] ? 'https' : 'http';
+
+            $url = sprintf(
+                '%s://api.ipstack.com/%s?access_key=%s',
+                $protocol,
+                $this->param['ip'],
+                $this->param['api_key']
+            );
+        }
+
+        return $url;
+    }
+
+    /**
+     * @return \Sujip\Ipstack\Http\Response
      */
     public function make()
     {
-        if (empty($this->ip)) {
+        if (empty($this->param['ip'])) {
             $this->throwException('Error: No IP specified', 403);
         }
 
         try {
-            $url = sprintf('https://ipstack.com/ipstack_api.php?ip=%s', $this->ip);
-
-            if ($this->api_key) {
-                $url = sprintf('http://api.ipstack.com/%s?access_key=%s', $this->ip, $this->api_key);
-            }
-
-            $response = file_get_contents($url);
+            $response = file_get_contents($this->getEndPoint());
         } catch (Exception $e) {
             $this->throwException('Forbidden', 403);
         }
@@ -59,6 +67,8 @@ class Request
     /**
      * @param $message
      * @param $code
+     *
+     * @return \Sujip\Ipstack\Exception\Forbidden
      */
     public function throwException($message, $code = 400)
     {
