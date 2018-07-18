@@ -1,5 +1,9 @@
 ## A simple package for IP to Location implementation with PHP using real-time API service through https://ipstack.com.
 
+[![Latest Stable Version](https://poser.pugx.org/sudiptpa/ipstack/v/stable)](https://packagist.org/packages/sudiptpa/ipstack)
+[![Total Downloads](https://poser.pugx.org/sudiptpa/ipstack/downloads)](https://packagist.org/packages/sudiptpa/ipstack)
+[![License](https://poser.pugx.org/sudiptpa/ipstack/license)](https://packagist.org/packages/sudiptpa/ipstack)
+
 https://ipstack.com provides a public HTTP API for software developers to search the geolocation of IP addresses. It uses a database of IP addresses that are associated to cities along with other relevant information like time zone, latitude and longitude.
 
 You're allowed up to 10,000 queries per month by default. Once this limit is reached, all of your requests will result in HTTP 403, forbidden, until your quota is cleared.
