@@ -134,6 +134,16 @@ class Ipstack
     }
 
     /**
+     * Get continent_code eg AS
+     *
+     * @return string
+     */
+    public function continentCode()
+    {
+        return $this->resolve('continent_code');
+    }
+
+    /**
      * Get country code, eg:NP
      *
      * @return string
@@ -164,6 +174,16 @@ class Ipstack
     }
 
     /**
+     * Gey your region_code: 1
+     *
+     * @return string
+     */
+    public function regionCode()
+    {
+        return $this->resolve('region_code');
+    }
+
+    /**
      * Get city, eg: Kathmandu
      *
      * @return string
@@ -181,6 +201,16 @@ class Ipstack
     public function zip()
     {
         return $this->resolve('zip');
+    }
+
+    /**
+     * Get your capital eg: Kathmandu
+     *
+     * @return string
+     */
+    public function capital()
+    {
+        return $this->resolve('location')['capital'] ?? null;
     }
 
     /**
@@ -231,5 +261,15 @@ class Ipstack
     public function currency()
     {
         return $this->resolve('currency')['code'] ?? null;
+    }
+
+    /**
+     * Get the currency name eg: Nepalese Rupee
+     *
+     * @return string
+     */
+    public function currencyName()
+    {
+        return $this->resolve('currency')['name'] ?? null;
     }
 }
