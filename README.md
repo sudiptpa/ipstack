@@ -1,4 +1,4 @@
-## A simple package for IP to Location implementation with PHP using real-time API service through https://ipstack.com.
+## A Simple Package for IP to Location implementation with PHP using real-time API service through https://ipstack.com.
 
 [![Build Status](https://travis-ci.com/sudiptpa/ipstack.svg?branch=master)](https://travis-ci.com/sudiptpa/ipstack)
 [![Latest Stable Version](https://poser.pugx.org/sudiptpa/ipstack/v/stable)](https://packagist.org/packages/sudiptpa/ipstack)
@@ -76,7 +76,7 @@ Contributions can be made via a Pull Request on [Github](https://github.com/sudi
 ### Testing
 
 ```
-  composer test
+  $ composer test
  ```
 
 ### Support
