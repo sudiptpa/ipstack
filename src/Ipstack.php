@@ -6,7 +6,7 @@ use Sujip\Ipstack\Exception\Forbidden;
 use Sujip\Ipstack\Http\Request;
 
 /**
- * Class GeoIp.
+ * Class Ipstack
  */
 class Ipstack
 {
@@ -45,7 +45,7 @@ class Ipstack
     /**
      * Set HTTPS mode on for API call.
      *
-     * @return boolean
+     * @return Ipstack
      */
     public function secure()
     {
