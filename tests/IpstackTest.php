@@ -17,12 +17,12 @@ class IpstackTest extends TestCase
      */
     private $payload;
 
-    public function setUp()
+    public function setUp() : void
     {
         $this->payload = file_get_contents(__DIR__ . '/Mock/Response/response.json');
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         $this->payload = null;
     }
