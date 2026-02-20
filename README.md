@@ -305,6 +305,14 @@ Use this quick mapping to migrate legacy usage to the current API.
 4. Add typed exception handling around lookup calls.
 5. Add a smoke test (local fake transport + real API env test) before release.
 
+## Quality Gates
+
+CI runs the following checks across PHP `8.3`, `8.4`, and `8.5`:
+
+- `composer test`
+- `composer stan`
+- `composer rector:check`
+
 ## Development
 
 ```bash
@@ -313,6 +321,10 @@ composer stan
 composer rector
 composer rector:check
 ```
+
+## Changelog
+
+See `CHANGELOG.md` for release notes (latest hardening release: `v2.1.0`).
 
 ## Author
 
