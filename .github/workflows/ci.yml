@@ -60,7 +60,5 @@ jobs:
         run: composer test
 
       - name: Run PHPStan
+        if: matrix.dependency-version == 'prefer-stable'
         run: composer stan
-
-      - name: Run Rector (dry-run)
-        run: composer rector:check

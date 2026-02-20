@@ -310,8 +310,7 @@ Use this quick mapping to migrate legacy usage to the current API.
 CI runs the following checks across PHP `8.3`, `8.4`, and `8.5`:
 
 - `composer test`
-- `composer stan`
-- `composer rector:check`
+- `composer stan` (on `prefer-stable` matrix jobs)
 
 ## Development
 
