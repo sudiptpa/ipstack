@@ -8,10 +8,10 @@ use Ipstack\Transport\TransportInterface;
 
 final class FakeTransport implements TransportInterface
 {
-    /** @var array<string,mixed> */
+    /** @var array<mixed> */
     private array $next;
 
-    /** @param array<string,mixed> $next */
+    /** @param array<mixed> $next */
     public function __construct(array $next)
     {
         $this->next = $next;
