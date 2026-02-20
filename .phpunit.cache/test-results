@@ -1,0 +1,1 @@
+{"version":2,"defects":{"Ipstack\\Tests\\IpstackClientTest::testLookupMapsModels":8},"times":{"Ipstack\\Tests\\IpstackClientTest::testLookupMapsModels":0.004,"Ipstack\\Tests\\IpstackClientTest::testApiErrorThrows":0.001}}
