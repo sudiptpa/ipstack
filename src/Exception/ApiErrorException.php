@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ipstack\Exception;
 
-final class ApiErrorException extends IpstackException
+class ApiErrorException extends IpstackException
 {
     public function __construct(
         public readonly int|string|null $apiCode,

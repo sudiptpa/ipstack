@@ -12,6 +12,10 @@ use Ipstack\Transport\TransportInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 
+use Ipstack\Transport\Psr18Transport;
+
+
+
 final class IpstackFactory
 {
     private ?string $accessKey = null;
@@ -36,6 +40,15 @@ final class IpstackFactory
     public function withTransport(TransportInterface $transport): self
     {
         $this->transport = $transport;
+
+        return $this;
+    }
+
+    public function withPsr18(
+        ClientInterface $client,
+        RequestFactoryInterface $requestFactory
+    ): self {
+        $this->transport = new Psr18Transport($client, $requestFactory);
 
         return $this;
     }

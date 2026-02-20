@@ -6,6 +6,9 @@ namespace Ipstack\Transport;
 
 interface TransportInterface
 {
-    /** @return array<string,mixed> */
+    /**
+     * @param array<string,string|int> $query
+     * @return array<mixed>
+     */
     public function get(string $url, array $query): array;
 }

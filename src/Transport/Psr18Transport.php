@@ -16,6 +16,10 @@ final class Psr18Transport implements TransportInterface
         private readonly RequestFactoryInterface $requests
     ) {}
 
+    /**
+     * @param array<string,string|int> $query
+     * @return array<mixed>
+     */
     public function get(string $url, array $query): array
     {
         $full = $url . (str_contains($url, '?') ? '&' : '?') . http_build_query($query);
@@ -28,6 +32,7 @@ final class Psr18Transport implements TransportInterface
         }
 
         $code = $res->getStatusCode();
+
         if ($code < 200 || $code >= 300) {
             throw new TransportException("Unexpected HTTP status: {$code}");
         }
@@ -38,6 +43,7 @@ final class Psr18Transport implements TransportInterface
         if (!is_array($data)) {
             throw new InvalidResponseException('Invalid JSON response');
         }
+
         return $data;
     }
 }

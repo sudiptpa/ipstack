@@ -31,6 +31,7 @@ final class IpstackResult implements \JsonSerializable
     public function formatted(): string
     {
         $parts = array_filter([$this->city, $this->zip, $this->region->name, $this->country->name]);
+
         return implode(', ', $parts);
     }
 
@@ -40,6 +41,9 @@ final class IpstackResult implements \JsonSerializable
         return $this->raw;
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function jsonSerialize(): array
     {
         return $this->raw;

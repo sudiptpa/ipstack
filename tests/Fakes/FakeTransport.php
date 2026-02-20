@@ -17,6 +17,10 @@ final class FakeTransport implements TransportInterface
         $this->next = $next;
     }
 
+    /**
+     * @param array<string,string|int> $query
+     * @return array<mixed>
+     */
     public function get(string $url, array $query): array
     {
         return $this->next;

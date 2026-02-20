@@ -12,6 +12,7 @@ use Ipstack\Exception\ApiErrorException;
 use Ipstack\Mapper\IpstackResultMapper;
 use Ipstack\Tests\Fakes\FakeTransport;
 use PHPUnit\Framework\TestCase;
+use Ipstack\Exception\RateLimitException;
 
 final class IpstackClientTest extends TestCase
 {
@@ -67,6 +68,23 @@ final class IpstackClientTest extends TestCase
         );
 
         $this->expectException(ApiErrorException::class);
+        $client->lookup('8.8.8.8');
+    }
+
+    public function testRateLimitMapsToTypedException(): void
+    {
+        $fake = new FakeTransport([
+            'error' => ['code' => 104, 'info' => 'Usage limit reached']
+        ]);
+
+        $client = new IpstackClient(
+            new Config('KEY'),
+            new Endpoint('https://api.ipstack.com'),
+            $fake,
+            new IpstackResultMapper()
+        );
+
+        $this->expectException(RateLimitException::class);
         $client->lookup('8.8.8.8');
     }
 }

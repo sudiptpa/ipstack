@@ -21,8 +21,11 @@ final class IpstackResultMapper
     /** @param array<string,mixed> $data */
     public function map(array $data): IpstackResult
     {
+        /** @var Country $country */
         $country = $this->hydrate(Country::class, $data);
-        $region  = $this->hydrate(Region::class, $data);
+
+        /** @var Region $region */
+        $region = $this->hydrate(Region::class, $data);
 
         $location = null;
         if (isset($data['location']) && is_array($data['location'])) {
@@ -91,7 +94,12 @@ final class IpstackResultMapper
         );
     }
 
-    /** @param array<string,mixed> $data */
+    /**
+     * @template T of object
+     * @param class-string<T> $class
+     * @param array<string,mixed> $data
+     * @return T
+     */
     private function hydrate(string $class, array $data): object
     {
         $rc = new ReflectionClass($class);
