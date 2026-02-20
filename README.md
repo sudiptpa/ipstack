@@ -1,5 +1,11 @@
 # ipstack PHP Client
 
+[![CI](https://github.com/sudiptpa/ipstack/actions/workflows/ci.yml/badge.svg)](https://github.com/sudiptpa/ipstack/actions/workflows/ci.yml)
+[![Latest Version](https://img.shields.io/packagist/v/sudiptpa/ipstack)](https://packagist.org/packages/sudiptpa/ipstack)
+[![Downloads](https://img.shields.io/packagist/dt/sudiptpa/ipstack)](https://packagist.org/packages/sudiptpa/ipstack)
+[![License](https://img.shields.io/packagist/l/sudiptpa/ipstack)](https://packagist.org/packages/sudiptpa/ipstack)
+[![PHP Version](https://img.shields.io/packagist/php-v/sudiptpa/ipstack)](https://packagist.org/packages/sudiptpa/ipstack)
+
 A modern, PSR-based PHP client for the [ipstack](https://ipstack.com) API.
 
 ## Highlights
