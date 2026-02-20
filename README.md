@@ -12,15 +12,22 @@ A modern, PSR-based PHP client for the [ipstack](https://ipstack.com) API.
 
 ## Requirements
 
-- PHP `^8.5`
+- PHP `8.3` to `8.5` (`>=8.3 <8.6`)
 - `psr/http-client`
 - `psr/http-factory`
 - `psr/http-message`
+- A concrete PSR-18 client + PSR-17 factory implementation (for example `symfony/http-client` + `nyholm/psr7`)
 
 ## Installation
 
 ```bash
 composer require sudiptpa/ipstack
+```
+
+Optional (for the PSR-18 quick-start adapter stack shown below):
+
+```bash
+composer require symfony/http-client nyholm/psr7
 ```
 
 ## Architecture
@@ -303,6 +310,8 @@ Use this quick mapping to migrate legacy usage to the current API.
 ```bash
 composer test
 composer stan
+composer rector
+composer rector:check
 ```
 
 ## Author
